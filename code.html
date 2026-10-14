@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Học liệu số: Bài 13 - Tập hợp các số nguyên (Toán 6)</title>
+  <!-- MathJax Hỗ trợ hiển thị công thức toán học --></script></script>
+  <style>
+    :root {
+      --primary: #1976d2;
+      --primary-dark: #0d47a1;
+      --secondary: #ff9800;
+      --success: #2e7d32;
+      --danger: #d32f2f;
+      --bg: #f4f6f9;
+      --card-bg: #ffffff;
+      --text: #212121;
+      --border: #e0e0e0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding-bottom: 50px; }
+    .container { max-width: 960px; margin: 0 auto; padding: 20px; }
+    
+    /* Header & Infographic Summary */
+    .header-card { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: 30px; border-radius: 16px; margin-bottom: 25px; box-shadow: 0 6px 18px rgba(0,0,0,0.1); }
+    .header-card h1 { font-size: 1.8rem; margin-bottom: 10px; }
+    .tag-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+    .badge { background: rgba(255,255,255,0.2); padding: 5px 12px; border-radius: 20px; font-size: 0.82rem; font-weight: bold; }
+    
+    /* Infographic Concept Cards */
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 30px; }
+    .info-box { background: var(--card-bg); border-left: 5px solid var(--secondary); border-radius: 10px; padding: 18px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+    .info-box h3 { color: var(--primary-dark); margin-bottom: 8px; font-size: 1.1rem; }
+    
+    /* Navigation Tabs */
+    .tab-bar { display: flex; overflow-x: auto; gap: 8px; margin-bottom: 25px; border-bottom: 2px solid var(--border); padding-bottom: 10px; }
+    .tab-btn { background: #e3f2fd; border: none; padding: 10px 18px; border-radius: 25px; font-weight: 600; color: var(--primary-dark); cursor: pointer; white-space: nowrap; transition: 0.3s; }
+    .tab-btn.active, .tab-btn:hover { background: var(--primary); color: white; }
+    
+    /* Question Card Styles */
+    .phase-content { display: none; }
+    .phase-content.active { display: block; }
+    .q-card { background: var(--card-bg); border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid var(--border); box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+    .q-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-size: 0.85rem; color: #666; }
+    .q-title { font-weight: 600; font-size: 1rem; margin-bottom: 15px; }
+    .options { display: flex; flex-direction: column; gap: 10px; }
+    .opt-label { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: 0.2s; }
+    .opt-label:hover { background: #f5f5f5; }
+    .opt-label.selected { border-color: var(--primary); background: #e3f2fd; }
+    
+    /* Controls & Results */
+    .control-panel { display: flex; justify-content: space-between; align-items: center; margin-top: 25px; }
+    .btn { background: var(--primary); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
+    .btn:hover { background: var(--primary-dark); }
+    .feedback-box { margin-top: 12px; padding: 12px; border-radius: 8px; display: none; font-size: 0.95rem; }
+    .feedback-correct { background: #e8f5e9; color: var(--success); border: 1px solid #c8e6c9; }
+    .feedback-wrong { background: #ffebee; color: var(--danger); border: 1px solid #ffcdd2; }
+    .score-summary { background: white; border-radius: 12px; padding: 25px; text-align: center; margin-top: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); display: none; }
+    .score-summary h2 { color: var(--primary-dark); margin-bottom: 15px; }
+  </style>
+</head>
+<body>
+<div class="container">
+  
+  <!-- Header Info -->
+  <div class="header-card">
+    <h1>BÀI 13: TẬP HỢP CÁC SỐ NGUYÊN</h1>
+    <p>Toán 6 - Chương III: Số nguyên | Kết nối tri thức với cuộc sống</p>
+    <div class="tag-container">
+      <span class="badge">Mã bài giảng: MATH6-C3-B13</span>
+      <span class="badge">Chuẩn GD&ĐT TP.HCM: QĐ 791/QĐ-SGDĐT</span>
+      <span class="badge">Kho học liệu số dùng chung</span>
+    </div>
+  </div>
+
+  <!-- Infographic Core Knowledge -->
+  <div class="info-grid">
+    <div class="info-box">
+      <h3>📌 1. Khái niệm & Kí hiệu</h3>
+      <p>• Số nguyên âm: \(-1, -2, -3, \dots\)</p>
+      <p>• Số nguyên dương: \(1, 2, 3, \dots\) (hoặc \(+1, +2, +3, \dots\))</p>
+      <p>• Số \(0\) không là số nguyên âm, cũng không là số nguyên dương.</p>
+      <p>• Tập hợp: \(\mathbb{Z} = \{\dots; -3; -2; -1; 0; 1; 2; 3; \dots\}\)</p>
+    </div>
+    <div class="info-box">
+      <h3>📏 2. Trục số & Số đối</h3>
+      <p>• Điểm gốc \(0\). Chiều dương từ trái sang phải; chiều âm từ phải sang trái.</p>
+      <p>• Hai số đối nhau cách đều điểm gốc \(0\) trên trục số (ví dụ: \(-3\) và \(3\)).</p>
+      <p>• Số đối của số nguyên \(a\) kí hiệu là \(-a\). Số đối của \(0\) là \(0\).</p>
+    </div>
+    <div class="info-box">
+      <h3>⚖️ 3. Thứ tự trong \(\mathbb{Z}\)</h3>
+      <p>• Mọi số âm đều nhỏ hơn \(0\) và nhỏ hơn mọi số dương.</p>
+      <p>• Nếu \(a, b\) là số nguyên dương và \(a > b\) thì \(-a < -b\).</p>
+      <p>• Trên trục số ngang, điểm nằm bên trái biểu diễn số nhỏ hơn.</p>
+    </div>
+  </div>
+
+  <!-- Tab Navigation for 5 Phases -->
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchPhase(1)">1. Khởi động (10 câu)</button>
+    <button class="tab-btn" onclick="switchPhase(2)">2. Khám phá (10 câu)</button>
+    <button class="tab-btn" onclick="switchPhase(3)">3. Luyện tập (10 câu)</button>
+    <button class="tab-btn" onclick="switchPhase(4)">4. Vận dụng (10 câu)</button>
+    <button class="tab-btn" onclick="switchPhase(5)">5. Vận dụng cao (10 câu)</button>
+  </div>
+
+  <!-- Form Quizzes Container -->
+  <div id="quiz-container"></div>
+
+  <!-- Submit and Score Panel -->
+  <div class="control-panel">
+    <button class="btn" id="submit-phase-btn" onclick="checkCurrentPhase()">Nộp bài chặng này</button>Tổng kết toàn bộ</button>
+  </div>
+
+  <div id="score-report" class="score-summary"></div>
+</div>
+
+<script>
+// Dữ liệu ngân hàng câu hỏi 50 câu đầy đủ theo 5 chặng, chuẩn mã YCCĐ QĐ 791
+const quizBank = [
+  // CHẶNG 1: KHỞI ĐỘNG (10 câu)
+  { phase: 1, id: 1, code: "020106.0201e1", q: "Khi nhiệt kế hiển thị 5 độ dưới 0°C, người ta viết giá trị nhiệt độ đó là:", opts: ["+5°C", "-5°C", "0°C", "5°C"], ans: 1, exp: "Nhiệt độ dưới 0°C được biểu diễn bằng số nguyên âm: -5°C." },
+  { phase: 1, id: 2, code: "020106.0201e1", q: "Độ cao của đáy vực biển sâu 150 m dưới mực nước biển được viết là:", opts: ["150 m", "+150 m", "-150 m", "0 m"], ans: 2, exp: "Độ sâu dưới mực nước biển quy ước mang dấu âm: -150 m." },
+  { phase: 1, id: 3, code: "020106.0201e1", q: "Tài khoản ngân hàng bị trừ 200,000 đồng được ghi nhận bằng số nguyên nào?", opts: ["+200 000 đồng", "-200 000 đồng", "200 000 đồng", "0 đồng"], ans: 1, exp: "Số tiền giảm/rút/trừ tương ứng với số âm: -200 000." },
+  { phase: 1, id: 4, code: "020106.0201a1", q: "Số nguyên âm trong các số sau là:", opts: ["12", "0", "-7", "1/2"], ans: 2, exp: "-7 là số nguyên âm vì gồm dấu trừ đứng trước số tự nhiên khác 0." },
+  { phase: 1, id: 5, code: "020106.0201a1", q: "Số đối của số 8 là:", opts: ["8", "-8", "0", "1/8"], ans: 1, exp: "Số đối của số nguyên dương a là -a, do đó số đối của 8 là -8." },
+  { phase: 1, id: 6, code: "020106.0201a1", q: "Số đối của -15 là:", opts: ["-15", "0", "15", "-(-15) sai"], ans: 2, exp: "Số đối của -15 là -(-15) = 15." },
+  { phase: 1, id: 7, code: "020106.0201a1", q: "Tập hợp các số nguyên được kí hiệu là:", opts: ["N", "N*", "Z", "Q"], ans: 2, exp: "Tập hợp số nguyên được kí hiệu bằng chữ in hoa Z." },
+  { phase: 1, id: 8, code: "020106.0201a1", q: "Phát biểu nào sau đây về số 0 là đúng nhất?", opts: ["Số 0 là số nguyên dương", "Số 0 là số nguyên âm", "Số 0 không là số nguyên âm, không là số nguyên dương", "Số 0 không thuộc Z"], ans: 2, exp: "Số 0 là số nguyên đặc biệt, không âm và không dương." },
+  { phase: 1, id: 9, code: "020106.0201b3", q: "Trên trục số nằm ngang, chiều từ trái sang phải gọi là:", opts: ["Chiều âm", "Chiều dương", "Chiều đối", "Chiều nghịch"], ans: 1, exp: "Quy ước trục số ngang: chiều từ trái sang phải là chiều dương." },
+  { phase: 1, id: 10, code: "020106.0201d1", q: "Khi so sánh -2 và 0, kết quả đúng là:", opts: ["-2 > 0", "-2 = 0", "-2 < 0", "Không so sánh được"], ans: 2, exp: "Mọi số nguyên âm đều nhỏ hơn 0." },
+
+  // CHẶNG 2: KHÁM PHÁ (10 câu)
+  { phase: 2, id: 11, code: "020106.0201a1", q: "Tập hợp số nguyên Z bao gồm các thành phần:", opts: ["Số nguyên âm và số nguyên dương", "Số nguyên dương và số 0", "Số nguyên âm, số 0 và số nguyên dương", "Tập hợp các số tự nhiên khác 0"], ans: 2, exp: "Z gồm số nguyên âm, số 0 và số nguyên dương." },
+  { phase: 2, id: 12, code: "020106.0201a1", q: "Khẳng định nào sau đây là SAI?", opts: ["-4 ∈ Z", "0 ∈ Z", "5 ∉ Z", "N ⊂ Z"], ans: 2, exp: "5 là số nguyên dương nên 5 ∈ Z, khẳng định 5 ∉ Z là sai." },
+  { phase: 2, id: 13, code: "020106.0201b3", q: "Điểm cách gốc 0 ba đơn vị về phía bên trái trên trục số nằm ngang biểu diễn số:", opts: ["3", "-3", "+3", "0"], ans: 1, exp: "Bên trái gốc 0 thuộc chiều âm, cách 3 đơn vị là điểm -3." },
+  { phase: 2, id: 14, code: "020106.0201c1", q: "Khoảng cách từ điểm biểu diễn số -6 đến điểm 0 trên trục số là:", opts: ["-6 đơn vị", "6 đơn vị", "0 đơn vị", "12 đơn vị"], ans: 1, exp: "Khoảng cách hình học luôn là giá trị dương: 6 đơn vị." },
+  { phase: 2, id: 15, code: "020106.0201c1", q: "Số đối của 0 là:", opts: ["-0", "+0", "0", "Không tồn tại"], ans: 2, exp: "Số đối của 0 chính là 0." },
+  { phase: 2, id: 16, code: "020106.0201d1", q: "Điểm A nằm bên trái điểm B trên trục số nằm ngang. Khi đó:", opts: ["A > B", "A < B", "A = B", "A và B đối nhau"], ans: 1, exp: "Trên trục số nằm ngang, điểm bên trái biểu diễn số nhỏ hơn: A < B." },
+  { phase: 2, id: 17, code: "020106.0201d1", q: "So sánh hai số nguyên âm: -9 và -5.", opts: ["-9 > -5", "-9 = -5", "-9 < -5", "-9 ≥ -5"], ans: 2, exp: "Vì 9 > 5 nên -9 < -5." },
+  { phase: 2, id: 18, code: "020106.0201e1", q: "Nếu quy ước năm 100 sau Công nguyên là +100 năm thì năm 500 trước Công nguyên ghi là:", opts: ["+500 năm", "-500 năm", "500 năm", "0 năm"], ans: 1, exp: "Trước Công nguyên quy ước mang giá trị nguyên âm: -500 năm." },
+  { phase: 2, id: 19, code: "020106.0201b3", q: "Trên trục số thẳng đứng, các số nguyên âm nằm ở:", opts: ["Phía trên điểm 0", "Phía dưới điểm 0", "Bên phải điểm 0", "Trùng với điểm 0"], ans: 1, exp: "Trục thẳng đứng quy ước: phía dưới điểm 0 là các số nguyên âm." },
+  { phase: 2, id: 20, code: "020106.0201d1", q: "Cho các số: -3; 0; 2; -5. Số nhỏ nhất trong các số đã cho là:", opts: ["-3", "0", "2", "-5"], ans: 3, exp: "Trong hai số âm: -5 < -3 < 0 < 2, vậy nhỏ nhất là -5." },
+
+  // CHẶNG 3: LUYỆN TẬP (10 câu)
+  { phase: 3, id: 21, code: "020106.0201a1", q: "Chọn kí hiệu thích hợp: -18 ... N", opts: ["∈", "∉", "⊂", "="], ans: 1, exp: "-18 là số nguyên âm, không thuộc tập số tự nhiên N." },
+  { phase: 3, id: 22, code: "020106.0201a1", q: "Tập hợp A = {x ∈ Z | -2 ≤ x < 2} được viết theo dạng liệt kê là:", opts: ["{-2; -1; 0; 1; 2}", "{-1; 0; 1}", "{-2; -1; 0; 1}", "{-2; -1; 1}"], ans: 2, exp: "Lấy từ -2 đến 1 (vì nhỏ hơn 2): {-2; -1; 0; 1}." },
+  { phase: 3, id: 23, code: "020106.0201c1", q: "Tìm x biết số đối của x là -24.", opts: ["x = -24", "x = 24", "x = 0", "x = 42"], ans: 1, exp: "Số đối của x là -x = -24 suy ra x = 24." },
+  { phase: 3, id: 24, code: "020106.0201d1", q: "Sắp xếp theo thứ tự tăng dần: 4, -7, 0, -2, 5.", opts: ["-7, -2, 0, 4, 5", "5, 4, 0, -2, -7", "-2, -7, 0, 4, 5", "0, -2, 4, 5, -7"], ans: 0, exp: "Thứ tự tăng dần: -7 < -2 < 0 < 4 < 5." },
+  { phase: 3, id: 25, code: "020106.0201d1", q: "Điền dấu thích hợp: -105 ... -99", opts: [">", "<", "=", "≥"], ans: 1, exp: "Vì 105 > 99 nên -105 < -99." },
+  { phase: 3, id: 26, code: "020106.0201b3", q: "Khoảng cách giữa hai điểm -4 và 2 trên trục số là bao nhiêu đơn vị?", opts: ["2", "4", "6", "8"], ans: 2, exp: "Từ -4 đến 0 là 4 đơn vị; từ 0 đến 2 là 2 đơn vị. Tổng: 4 + 2 = 6." },
+  { phase: 3, id: 27, code: "020106.0201d1", q: "Số nguyên liền trước của số -8 là:", opts: ["-7", "-9", "7", "9"], ans: 1, exp: "Số liền trước của x là x - 1, số liền trước của -8 là -9." },
+  { phase: 3, id: 28, code: "020106.0201d1", q: "Số nguyên liền sau của số -1 là:", opts: ["-2", "0", "1", "-0"], ans: 1, exp: "Số liền sau của -1 trên trục số là 0." },
+  { phase: 3, id: 29, code: "020106.0201c1", q: "Cặp số nào sau đây KHÔNG phải là hai số đối nhau?", opts: ["-7 và 7", "12 và -12", "0 và 0", "-5 và -5"], ans: 3, exp: "-5 và -5 là cùng một số, số đối của -5 phải là 5." },
+  { phase: 3, id: 30, code: "020106.0201a1", q: "Tập hợp các số nguyên âm có hai chữ số lớn hơn -13 gồm:", opts: ["{-12; -11; -10}", "{-13; -12; -11; -10}", "{-12; -11; -10; -9}", "{-14; -15; ...}"], ans: 0, exp: "Các số có 2 chữ số lớn hơn -13 là: -12, -11, -10." },
+
+  // CHẶNG 4: VẬN DỤNG (10 câu)
+  { phase: 4, id: 31, code: "020106.0201e1", q: "Nhiệt độ phòng lạnh ban đầu là 2°C, sau đó giảm 5°C. Nhiệt độ mới là:", opts: ["3°C", "-3°C", "-5°C", "7°C"], ans: 1, exp: "2 - 5 = -3, nhiệt độ lúc này là -3°C." },
+  { phase: 4, id: 32, code: "020106.0201e1", q: "Một tàu ngầm lặn ở độ cao -60 m. Khi tàu lặn sâu thêm 25 m nữa, vị trí mới của tàu là:", opts: ["-35 m", "-85 m", "+85 m", "-60 m"], ans: 1, exp: "Lặn sâu thêm tức độ cao giảm: -60 - 25 = -85 m." },
+  { phase: 4, id: 33, code: "020106.0201e1", q: "Cửa hàng kinh doanh tháng 1 lãi 15 triệu (ghi +15), tháng 2 lỗ 8 triệu. Lợi nhuận tháng 2 ghi là:", opts: ["+8 triệu đồng", "-8 triệu đồng", "8 triệu đồng", "0 triệu đồng"], ans: 1, exp: "Kinh doanh lỗ quy ước ghi số nguyên âm: -8 triệu đồng." },
+  { phase: 4, id: 34, code: "020106.0201e1", q: "Đỉnh Phan-xi-păng cao 3143 m trên mực nước biển (+3143 m), Rãnh Mariana sâu 10971 m dưới mực nước biển (-10971 m). Phát biểu nào đúng?", opts: ["Chênh lệch độ cao là 3143 - 10971", "Điểm sâu nhất ở độ cao -10971 m", "Đỉnh núi ở độ cao âm", "Mực nước biển ở độ cao 100 m"], ans: 1, exp: "Rãnh sâu dưới mực nước biển được biểu thị ở độ cao âm: -10971 m." },
+  { phase: 4, id: 35, code: "020106.0201d1", q: "Nhiệt độ tại Seoul là -4°C, tại Tokyo là 2°C, tại Matxcơva là -12°C. Thành phố lạnh nhất là:", opts: ["Seoul", "Tokyo", "Matxcơva", "Cả 3 như nhau"], ans: 2, exp: "Vì -12 < -4 < 2 nên Matxcơva lạnh nhất." },
+  { phase: 4, id: 36, code: "020106.0201e1", q: "Bác Nam nợ ngân hàng 10 triệu đồng. Tình trạng tài chính của bác Nam biểu diễn bằng số nguyên là:", opts: ["+10 000 000 đồng", "-10 000 000 đồng", "10 000 000 đồng", "0 đồng"], ans: 1, exp: "Tiền nợ được ghi nhận bằng số nguyên âm: -10 000 000 đồng." },
+  { phase: 4, id: 37, code: "020106.0201b3", q: "Một thang máy tầng trệt là G (tương ứng 0). Hai tầng hầm B1, B2 bên dưới sẽ tương ứng các số:", opts: ["1 và 2", "-1 và -2", "+1 và +2", "0 và -1"], ans: 1, exp: "Dưới mặt đất quy ước là tầng âm: hầm B1 là -1, hầm B2 là -2." },
+  { phase: 4, id: 38, code: "020106.0201d1", q: "Có bao nhiêu số nguyên x thoả mãn điều kiện: -4, ans: 1, exp: "x ∈ {-3; -2; -1; 0; 1; 2}. Gồm 6 phần tử." },
+  { phase: 4, id: 39, code: "020106.0201c1", q: "Một con ốc sên bò trên cọc gỗ. Bò lên 5 cm tính là +5 cm. Nếu sên bò xuống 5 cm thì ghi:", opts: ["-5 cm", "+5 cm", "0 cm", "10 cm"], ans: 0, exp: "Chuyển động ngược chiều dương biểu thị bằng số đối: -5 cm." },
+  { phase: 4, id: 40, code: "020106.0201e1", q: "Độ viễn thị được ghi nhận dấu (+), cận thị ghi dấu (-). Bị cận 2 đi-ốp thì ghi:", opts: ["+2 đi-ốp", "-2 đi-ốp", "0 đi-ốp", "2 đi-ốp"], ans: 1, exp: "Mắt cận mang dấu âm: -2 đi-ốp." },
+
+  // CHẶNG 5: VẬN DỤNG CAO (10 câu)
+  { phase: 5, id: 41, code: "020106.0201d1", q: "Cho a là số nguyên âm, b là số nguyên dương. So sánh số đối của a (tức -a) với số đối của b (tức -b):", opts: ["-a > -b", "-a < -b", "-a = -b", "Chưa thể kết luận"], ans: 0, exp: "a < 0 => -a > 0; b > 0 => -b < 0. Do đó số dương -a luôn lớn hơn số âm -b." },
+  { phase: 5, id: 42, code: "020106.0201d1", q: "Tìm số lượng các số nguyên x thoả mãn điều kiện: -100 ≤ x ≤ 100.", opts: ["200", "201", "199", "100"], ans: 1, exp: "Số các số nguyên là: 100 - (-100) + 1 = 201 số." },
+  { phase: 5, id: 43, code: "020106.0201d1", q: "Tính tổng tất cả các số nguyên x thoả mãn: -5 < x, ans: 0, exp: "x ∈ {-4; -3; -2; -1; 0; 1; 2; 3; 4}. Các cặp số đối nhau có tổng bằng 0." },
+  { phase: 5, id: 44, code: "020106.0201c1", q: "Cho x là số nguyên sao cho số đối của x lớn hơn 3. Khẳng định nào luôn đúng?", opts: ["x > 3", "x < -3", "x > -3", "x < 3"], ans: 1, exp: "-x > 3 tương đương với x < -3 (ví dụ -4 có số đối là 4 > 3)." },
+  { phase: 5, id: 45, code: "020106.0201d1", q: "Có bao nhiêu cặp số nguyên (x, y) đối nhau thỏa mãn: -3 ≤ x, ans: 1, exp: "Vì x đối y và x < y nên x < 0 có 3 cặp." },
+  { phase: 5, id: 46, code: "020106.0201b3", q: "Trên trục số, điểm M nằm giữa -6 và 2, đồng thời cách đều hai điểm này. M biểu diễn số:", opts: ["-4", "-2", "0", "-1"], ans: 1, exp: "Khoảng cách giữa -6 và 2 là 8 đơn vị. Trung điểm cách mỗi bên 4 đơn vị: -6 + 4 = -2." },
+  { phase: 5, id: 47, code: "020106.0201d1", q: "Cho a là số nguyên âm lớn nhất, b là số nguyên dương nhỏ nhất. Giá trị a và b lần lượt là:", opts: ["a = 0; b = 1", "a = -1; b = 1", "a = -1; b = 0", "Không xác định được a"], ans: 1, exp: "Số nguyên âm lớn nhất là -1; số nguyên dương nhỏ nhất là 1." },
+  { phase: 5, id: 48, code: "020106.0201d1", q: "Tìm số nguyên âm x lớn nhất thoả mãn: x, ans: 1, exp: "Các số nhỏ hơn -15 là -16, -17,... Số lớn nhất trong nhóm này là -16." },
+  { phase: 5, id: 49, code: "020106.0201b3", q: "Di chuyển điểm A trên trục số từ vị trí -3 sang phải 7 đơn vị, rồi sang trái 5 đơn vị. Tọa độ cuối của A là:", opts: ["-1", "0", "+1", "-4"], ans: 0, exp: "Vị trí mới: -3 + 7 - 5 = -1." },
+  { phase: 5, id: 50, code: "020106.0201e1", q: "Nhiệt độ ngoài trời lúc 6h sáng là -2°C, đến trưa tăng 9°C, đến nửa đêm giảm 11°C so với buổi trưa. Nhiệt độ nửa đêm là:", opts: ["-4°C", "-2°C", "0°C", "2°C"], ans: 0, exp: "Buổi trưa: -2 + 9 = 7°C. Nửa đêm: 7 - 11 = -4°C." }
+];
+
+let userAnswers = {};
+let currentActivePhase = 1;
+
+// Hiển thị giao diện bài tập của từng chặng
+function renderQuestions(phaseNum) {
+  const container = document.getElementById("quiz-container");
+  container.innerHTML = "";
+  const list = quizBank.filter(item => item.phase === phaseNum);
+
+  list.forEach((item, index) => {
+    const qDiv = document.createElement("div");
+    qDiv.className = "q-card";
+    qDiv.id = `card-${item.id}`;
+
+    let optionsHtml = "";
+    item.opts.forEach((opt, optIndex) => {
+      const isChecked = userAnswers[item.id] === optIndex ? "checked" : "";
+      const isSelectedClass = userAnswers[item.id] === optIndex ? "selected" : "";
+      optionsHtml += `
+        <label class="opt-label \({isSelectedClass}" onclick="selectOption(\){item.id}, ${optIndex}, this)">
+          <input type="radio" name="q_\({item.id}" value="\){optIndex}" ${isChecked} style="display:none;">
+          <span><strong>\({String.fromCharCode(65 + optIndex)}.</strong> \){opt}</span>
+        </label>
+      `;
+    });
+
+    qDiv.innerHTML = `
+      <div class="q-header">
+        <span><strong>Câu ${item.id}</strong> (Chặng ${item.phase})</span>
+        <span>Mã YCCĐ: <code>${item.code}</code></span>
+      </div>
+      <div class="q-title">${item.q}</div>
+      <div class="options">${optionsHtml}</div>
+      <div class="feedback-box" id="feedback-${item.id}"></div>
+    `;
+    container.appendChild(qDiv);
+  });
+  if (window.MathJax) MathJax.typesetPromise();
+}
+
+function selectOption(qId, optIdx, labelElem) {
+  userAnswers[qId] = optIdx;
+  const parent = labelElem.closest('.options');
+  parent.querySelectorAll('.opt-label').forEach(el => el.classList.remove('selected'));
+  labelElem.classList.add('selected');
+}
+
+function switchPhase(phaseNum) {
+  currentActivePhase = phaseNum;
+  document.querySelectorAll(".tab-btn").forEach((btn, idx) => {
+    btn.classList.toggle("active", idx === phaseNum - 1);
+  });
+  document.getElementById("score-report").style.display = "none";
+  renderQuestions(phaseNum);
+}
+
+// Kiểm tra và hiển thị kết quả cho chặng hiện tại
+function checkCurrentPhase() {
+  const list = quizBank.filter(item => item.phase === currentActivePhase);
+  let correctCount = 0;
+  
+  list.forEach(item => {
+    const fb = document.getElementById(`feedback-${item.id}`);
+    const selected = userAnswers[item.id];
+    fb.style.display = "block";
+    
+    if (selected === undefined) {
+      fb.className = "feedback-box feedback-wrong";
+      fb.innerHTML = `⚠️ <em>Chưa chọn đáp án.</em> <strong>Đáp án đúng: ${String.fromCharCode(65 + item.ans)}</strong>. <br>Giải thích: ${item.exp}`;
+    } else if (selected === item.ans) {
+      correctCount++;
+      fb.className = "feedback-box feedback-correct";
+      fb.innerHTML = `✅ <strong>Chính xác!</strong> ${item.exp}`;
+    } else {
+      fb.className = "feedback-box feedback-wrong";
+      fb.innerHTML = `❌ <strong>Chưa chính xác!</strong> Bạn chọn ${String.fromCharCode(65 + selected)}. <strong>Đáp án đúng: ${String.fromCharCode(65 + item.ans)}</strong>. <br>Giải thích: ${item.exp}`;
+    }
+  });
+
+  alert(`Hoàn thành chặng ${currentActivePhase}! Bạn làm đúng \({correctCount}/\){list.length} câu.`);
+  if (window.MathJax) MathJax.typesetPromise();
+}
+
+// Tổng kết đánh giá toàn bài
+function finishEntireQuiz() {
+  let totalCorrect = 0;
+  const total = quizBank.length;
+  
+  quizBank.forEach(item => {
+    if (userAnswers[item.id] === item.ans) totalCorrect++;
+  });
+
+  const rep = document.getElementById("score-report");
+  const percent = Math.round((totalCorrect / total) * 100);
+  let rank = "";
+  if (percent >= 85) rank = "Xuất sắc! Đạt chuẩn kiến thức kỹ năng mức độ cao.";
+  else if (percent >= 70) rank = "Khá tốt! Đã nắm vững các khái niệm và kỹ năng cơ bản.";
+  else if (percent >= 50) rank = "Đạt yêu cầu! Cần ôn luyện thêm về so sánh số âm và bài toán thực tiễn.";
+  else rank = "Cần cố gắng! Hãy xem lại phần Infographic tóm tắt ở đầu bài.";
+
+  rep.style.display = "block";
+  rep.innerHTML = `
+    <h2>KẾT QUẢ ĐÁNH GIÁ CHUNG TOÀN BÀI</h2>
+      Điểm số: \({totalCorrect}/\){total} (${percent}%)
+    </p>
+    <p><strong>Xếp loại năng lực:</strong> ${rank}</p>
+      <p>• Nhận biết số nguyên âm & Z: Đạt</p>
+      <p>• Trục số & Số đối: Đạt</p>
+      <p>• So sánh số nguyên & Thứ tự: Cần duy trì luyện tập</p>
+      <p>• Giải quyết vấn đề thực tế: Phát huy tính ứng dụng</p>
+    </div>
+  `;
+  rep.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Khởi chạy mặc định chặng 1
+window.onload = () => { renderQuestions(1); };
+</script>
+</body>
+</html>
